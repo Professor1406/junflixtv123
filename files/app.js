@@ -1,15 +1,4 @@
-const TMDB_API = "648c004c97b5a1425c702528ab88ddac";
-const TRAKT_API = "ac546c48d4785be512b307374e9dfff78041ed94f344a121d7cff31b3447c296";
-const IMDB_API = {
-    url: 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr',
-    options: {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': '1fe6cf5639msh9c8d797536e7d47p192bb2jsnc56a3005c1b1',
-            'x-rapidapi-host': 'imdb8.p.rapidapi.com'
-        }
-    }
-};
+const TMDB_API = "648c004c97b5a1425c702528ab88ddac"; // Your TMDB API key
 
 async function fetchContent(apiUrl) {
     try {
@@ -24,22 +13,48 @@ async function fetchContent(apiUrl) {
 async function loadMovies() {
     const movies = await fetchContent(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API}`);
     const moviesContent = document.getElementById("movies-content");
-    movies.results.forEach(movie => {
-        const div = document.createElement("div");
-        div.textContent = movie.title;
-        moviesContent.appendChild(div);
-    });
+
+    // Check if there's any data
+    if (movies && movies.results) {
+        movies.results.forEach(movie => {
+            const div = document.createElement("div");
+            div.classList.add("content-item");
+            div.innerHTML = `
+                <h3>${movie.title}</h3>
+                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}" />
+                <p>${movie.overview}</p>
+            `;
+            moviesContent.appendChild(div);
+        });
+    } else {
+        moviesContent.innerHTML = "<p>No movies found.</p>";
+    }
 }
 
 async function loadAnime() {
+    // Replace with your anime API or use the right endpoint
     const anime = await fetchContent("https://api.consumet.org/anime");
     const animeContent = document.getElementById("anime-content");
-    anime.results.forEach(animeItem => {
-        const div = document.createElement("div");
-        div.textContent = animeItem.title;
-        animeContent.appendChild(div);
-    });
+
+    // Check if anime data is present
+    if (anime && anime.results) {
+        anime.results.forEach(animeItem => {
+            const div = document.createElement("div");
+            div.classList.add("content-item");
+            div.innerHTML = `
+                <h3>${animeItem.title}</h3>
+                <img src="${animeItem.image_url}" alt="${animeItem.title}" />
+                <p>${animeItem.synopsis}</p>
+            `;
+            animeContent.appendChild(div);
+        });
+    } else {
+        animeContent.innerHTML = "<p>No anime found.</p>";
+    }
 }
 
-loadMovies();
-loadAnime();
+// Load content when the page is ready
+window.onload = () => {
+    loadMovies();
+    loadAnime();
+};

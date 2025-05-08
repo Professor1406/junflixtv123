@@ -1,0 +1,296 @@
+.server-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 24px;
+  background: #141414;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.server-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.server-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: #252525;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.server-group:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.server-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.server-header i {
+  color: #e50914;
+  font-size: 20px;
+}
+
+.server-group select {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  background: #333333;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+}
+
+.server-group select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.server-group select option {
+  background: #141414;
+  color: #fff;
+  padding: 12px;
+}
+
+.server-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #999;
+  padding: 12px;
+  background: #252525;
+  border-radius: 4px;
+}
+
+.server-note i {
+  color: #e50914;
+  font-size: 18px;
+}
+
+.server-note strong {
+  color: #fff;
+}
+
+.server-quality {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #999;
+  padding: 12px;
+  background: #252525;
+  border-radius: 4px;
+}
+
+.server-quality i {
+  color: #e50914;
+  font-size: 18px;
+}
+
+.server-quality select {
+  padding: 8px 12px;
+  background: #333333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+}
+
+.server-quality select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.server-group.active {
+  background: #222222;
+  border: 2px solid #e50914;
+}
+
+.server-group.error {
+  background: #331212;
+  border: 2px solid #e50914;
+}
+
+.error-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #e50914;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #22b14c;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .server-selector {
+    padding: 15px;
+  }
+  
+  .server-info {
+    gap: 15px;
+  }
+  
+  .server-group {
+    padding: 12px;
+  }
+  
+  .server-header {
+    font-size: 15px;
+  }
+  
+  .server-group select {
+    font-size: 13px;
+  }
+  
+  .server-note,
+  .server-quality {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+.server-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.server-header i {
+  color: #FF6B6B;
+  font-size: 18px;
+}
+
+.server-group select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  background: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.server-group select:focus {
+  outline: none;
+  border-color: #FF6B6B;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.1);
+}
+
+.server-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #666;
+  margin-top: 15px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.server-note i {
+  color: #FF6B6B;
+  font-size: 16px;
+}
+
+.server-note:hover {
+  background: #f0f2f5;
+}
+
+.server-note:hover i {
+  color: #FF5252;
+}
+
+.server-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.server-group, .quality-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.server-info {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.server-info span {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 5px;
+}
+
+.server-info span.active {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+}
